@@ -1,0 +1,13 @@
+.footer {
+    display: none;
+    right: 1rem;
+    bottom: 1rem;
+    font-size: 1.2rem;
+    @include screen-lg(min-width) {
+        display: block;
+        position: fixed;
+    }
+    .icon {
+        color: $brick-red;
+    }
+}

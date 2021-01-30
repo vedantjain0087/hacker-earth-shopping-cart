@@ -7,6 +7,7 @@ import 'react-notifications-component/dist/theme.css'
 import { ItemProvider } from "./context/itemContext";
 import Cart from "./components/cart";
 import Total from "./components/total"
+import Footer from "./components/footer";
 export default function App() {
   return (
       <ItemProvider>
@@ -33,6 +34,7 @@ export default function App() {
               <Total></Total>
             </Col>
           </Row>
+          <Footer></Footer>
         </Container>
       </ItemProvider>
   );
