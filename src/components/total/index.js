@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ItemContext } from "../../context/itemContext";
 
 function Total() {
+    const [cartItems, setCartItems] = useContext(ItemContext);
+    
     return (
         <div className="total mx-auto">
             <h2 className="total__title">Total</h2>
             <ul className="total__billing">
                 <li>
                     <div>
-                        <span>Items (7)</span>
+                        <span>Items ({cartItems.length})</span>
                         <span>:</span>
                     </div>
                     <div>$138.00</div>

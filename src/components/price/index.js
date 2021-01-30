@@ -1,9 +1,9 @@
 import React from "react";
 
-function Price() {
+function Price ({price}) {
     return (
         <div className="price">
-            $25
+            ${price}
         </div>
     );
 }

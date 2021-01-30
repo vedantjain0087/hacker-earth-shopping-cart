@@ -1,10 +1,11 @@
-export const staticData = [
+export const staticCartItems = [
     {
       "id": 9090,
       "name": "Item1",
       "price": 200,
       "discount": 10,
       "type": "fiction",
+      "quantity": 1,
       "img_url": "https://place-hold.it/40.jpg"
     },
     {
@@ -13,6 +14,7 @@ export const staticData = [
       "price": 250,
       "discount": 15,
       "type": "literature",
+      "quantity": 1,
       "img_url": "https://place-hold.it/40.jpg"
     },
     {
@@ -21,6 +23,7 @@ export const staticData = [
       "price": 320,
       "discount": 5,
       "type": "literature",
+      "quantity": 1,
       "img_url": "https://place-hold.it/40.jpg"
     },
     {
@@ -29,6 +32,7 @@ export const staticData = [
       "price": 290,
       "discount": 0,
       "type": "thriller",
+      "quantity": 1,
       "img_url": "https://place-hold.it/40.jpg"
     },
     {
@@ -37,6 +41,7 @@ export const staticData = [
       "price": 500,
       "discount": 25,
       "type": "thriller",
+      "quantity": 1,
       "img_url": "https://place-hold.it/40.jpg"
     },
     {
@@ -45,6 +50,7 @@ export const staticData = [
       "price": 150,
       "discount": 5,
       "type": "literature",
+      "quantity": 1,
       "img_url": "https://place-hold.it/40.jpg"
     },
     {
@@ -53,6 +59,7 @@ export const staticData = [
       "price": 700,
       "discount": 22,
       "type": "literature",
+      "quantity": 1,
       "img_url": "https://place-hold.it/40.jpg"
     },
     {
@@ -61,6 +68,7 @@ export const staticData = [
       "price": 350,
       "discount": 18,
       "type": "fiction",
+      "quantity": 1,
       "img_url": "https://place-hold.it/40.jpg"
     }
 ];
