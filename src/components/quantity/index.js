@@ -2,18 +2,13 @@ import React, {useState, useEffect, useContext} from "react";
 import { ItemContext } from "../../context/itemContext";
 
 function Quantity({quantity, id}) {
-    const [cartItems, setCartItems] = useContext(ItemContext);
+    const { changeQuantity } = useContext(ItemContext);
     const [actualQty, setQuantity] = useState(quantity);
     const handleChange = (e) => {
-        setQuantity((qty) => e.target.value);
+        setQuantity((qty) => e.target.value ? e.target.value : 0);
     }
     useEffect(() => {
-        setCartItems((items) => items.map((item) => {
-            if (item.id === id) {
-                item.quantity = actualQty;
-            }
-            return item;
-        }))
+        changeQuantity(id, actualQty)
     }, [actualQty]);
 
     const decrementQuantity = () => {

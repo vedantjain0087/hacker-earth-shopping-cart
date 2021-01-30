@@ -5,21 +5,9 @@ import { store } from 'react-notifications-component';
 import { ItemContext } from "../../context/itemContext";
 
 function Item ({name, id}) {
-    const [cartItems, setCartItems] = useContext(ItemContext);
+    const { removeCartItem } = useContext(ItemContext);
     const removeItem = () => {
-        setCartItems((items) => items.filter((item) => item.id !== id));
-        store.addNotification({
-            title: "Deleted",
-            message: "Item deleted from cart",
-            type: "warning",
-            insert: "top",
-            container: "top-center",
-            animationIn: ["animate__animated", "animate__fadeIn"],
-            animationOut: ["animate__animated", "animate__fadeOut"],
-            dismiss: {
-              duration: 3000
-            }
-          });
+        removeCartItem(id);
     }
     return (
         <div className="item">

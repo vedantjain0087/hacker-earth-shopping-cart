@@ -2,28 +2,14 @@ import React, { useState, useContext, useEffect } from "react";
 import { ItemContext } from "../../context/itemContext";
 
 function Total() {
-    const [cartItems, setCartItems] = useContext(ItemContext);
-    const [totalQuantity, setQuantity] = useState(0);
+    const { getTotalQuantity, getTotalDiscount, getTotalAmount } = useContext(ItemContext);
+    const [totalQuantity, setQuantity] = useState(getTotalQuantity());
     const [discount, setDiscount] = useState(0);
     const [totalAmount, setTotal] = useState(0);
     useEffect(() => {
-        let newDiscount = 0;
-        let newTotal = 0;
-        let newQuantity = 0;
-        cartItems.forEach((item) => {
-            if (item.discount) {
-                newDiscount += item.discount * item.quantity; 
-            }
-            if (item.price) {
-                newTotal += item.price * item.quantity; 
-            }
-            if (item.quantity) {
-                newQuantity += item.quantity; 
-            }
-        });
-        setQuantity((prevQuantity) => newQuantity);
-        setDiscount((prevDiscount) => newDiscount);
-        setTotal((prevTotal) => newTotal);
+        setQuantity((prevQty) => getTotalQuantity());
+        setDiscount((prevDiscount) => getTotalDiscount());
+        setTotal((prevTotal) => getTotalAmount());
     })
     return (
         <div className="total mx-auto">

@@ -1,4 +1,4 @@
-import React, {Fragment, useContext} from "react";
+import React, {Fragment, useContext, useEffect, useState} from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import Item from "../item";
 import Quantity from "../quantity";
@@ -7,11 +7,15 @@ import NullState from "../null_state"
 import { ItemContext } from "../../context/itemContext";
 
 function Cart() {
-    const [cartItems, setCartItems] = useContext(ItemContext);
+    const {cartItems, getTotalQuantity} = useContext(ItemContext);
+    const [totalQty, setTotalQty] = useState(getTotalQuantity());
+    useEffect(() => {
+        setTotalQty((preQty) => getTotalQuantity())
+    })
     return (
         <Fragment>
             <Row className="cart__header">
-                <Col xs={6} sm={6} className="text-items">Items ({cartItems.length})</Col>
+                <Col xs={6} sm={6} className="text-items">Items ({totalQty})</Col>
                 <Col xs={3} sm={3} className="text-items text-center">Qty</Col>
                 <Col xs={3} sm={3} className="text-items text-center">Price</Col>
             </Row>
