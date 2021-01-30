@@ -2,12 +2,15 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
+import ReactNotification from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
 import { ItemProvider } from "./context/itemContext";
 import Cart from "./components/cart";
 import Total from "./components/total"
 export default function App() {
   return (
       <ItemProvider>
+        <ReactNotification />
         <nav></nav>
         <Container>
           <Row>
