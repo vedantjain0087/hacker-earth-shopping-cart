@@ -2,14 +2,16 @@ import React, { useState, useContext, useEffect } from "react";
 import { ItemContext } from "../../context/itemContext";
 
 function Total() {
-    const { getTotalQuantity, getTotalDiscount, getTotalAmount } = useContext(ItemContext);
+    const { getTotalQuantity, getTotalDiscount, getTotalAmount, getTypeDiscount, convertToDecimal } = useContext(ItemContext);
     const [totalQuantity, setQuantity] = useState(getTotalQuantity());
-    const [discount, setDiscount] = useState(0);
-    const [totalAmount, setTotal] = useState(0);
+    const [discount, setDiscount] = useState(getTotalDiscount());
+    const [typeDiscount, setTypeDiscount] = useState(getTypeDiscount());
+    const [totalAmount, setTotal] = useState(getTotalAmount());
     useEffect(() => {
-        setQuantity((prevQty) => getTotalQuantity());
-        setDiscount((prevDiscount) => getTotalDiscount());
-        setTotal((prevTotal) => getTotalAmount());
+        setQuantity((prevQty) => getTotalQuantity()); // set total quantity of items
+        setDiscount((prevDiscount) => getTotalDiscount()); // set total discount on items
+        setTypeDiscount((prevTypeDiscount) => getTypeDiscount()); // set total TYPE discount on items
+        setTotal((prevTotal) => getTotalAmount()); // set total price amount
     })
     return (
         <div className="total mx-auto">
@@ -27,19 +29,19 @@ function Total() {
                         <span>Discount</span>
                         <span>:</span>
                     </div>
-                    <div>-${discount}</div>
+                    <div>{discount != 0 && <span>-</span>}${discount}</div>
                 </li>
                 <li>
                     <div>
                         <span>Type discount</span>
                         <span>:</span>
                     </div>
-                    <div>-$10.00</div>
+                    <div>{typeDiscount != 0 && <span>-</span>}${typeDiscount}</div>
                 </li>
             </ul>
             <div className="total__footer">
                 <div>Order total</div>
-                <div>${totalAmount - discount}</div>
+                <div>${convertToDecimal(totalAmount - discount - typeDiscount)}</div>
             </div>
         </div>
     );

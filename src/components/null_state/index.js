@@ -2,6 +2,9 @@ import React, {useContext} from "react";
 import { Button } from "react-bootstrap";
 import { ItemContext } from "../../context/itemContext";
 function NullState () {
+    /**
+     * reset the cart with original static data
+     */
     const {resetCart} = useContext(ItemContext);
     return (
         <div className="null-state">

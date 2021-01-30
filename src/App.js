@@ -10,7 +10,9 @@ import Total from "./components/total"
 export default function App() {
   return (
       <ItemProvider>
+        {/* Notificatio component */}
         <ReactNotification />
+        {/* grey header */}
         <nav></nav>
         <Container>
           <Row>
@@ -23,9 +25,11 @@ export default function App() {
           </Row>
           <Row>
             <Col xs={{span: 12, order: 2}} sm={{span: 12, order: 2}} lg={{span: 8, order: 1}}>
+              {/* cart component that shows list of items */}
               <Cart></Cart>
             </Col>
             <Col xs={{span: 12, order: 1}} sm={{span: 12, order: 1}} lg={{span: 4, order: 2}} className="mb-4">
+              {/* total component that shows total price and discount summary */}
               <Total></Total>
             </Col>
           </Row>

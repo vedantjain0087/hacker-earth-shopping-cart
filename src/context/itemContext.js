@@ -1,13 +1,29 @@
 import React, { useState, createContext, useEffect } from "react";
 import { store } from 'react-notifications-component';
 import {staticCartItems} from "../data";
-import { localStorageKey } from "../constants";
+import { localStorageKey, FICTION, TYPE_DISCOUNT, POPUP } from "../constants";
 const ItemContext = createContext();
 function ItemProvider(props) {
+    // if data exists in localStorage then retrieve it else use static data
     const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem(localStorageKey)) || staticCartItems);
+    
+    // update localStorage with the latest cart data
     useEffect(() => {
         localStorage.setItem(localStorageKey, JSON.stringify(cartItems))
-    })
+    });
+
+    /**
+     * convert given number to a 2 decimal place floating number
+     * @param {number} number given number
+     */
+    const convertToDecimal = (number) => {
+        return number.toFixed(2);
+    }
+    /**
+     * update the quantity of a item
+     * @param { number } id 
+     * @param { nymber } actualQty 
+     */
     const changeQuantity = (id, actualQty) => {
         actualQty = actualQty ? actualQty : 0;
         setCartItems((items) => items.map((item) => {
@@ -17,6 +33,9 @@ function ItemProvider(props) {
             return item;
         }));
     }
+    /**
+     * return total quantity of all items present in cart
+     */
     const getTotalQuantity = () => {
         let qty = 0;
         cartItems.forEach((item) => {
@@ -24,29 +43,52 @@ function ItemProvider(props) {
         });
         return qty;
     }
+    /**
+     * returns total discount amount for all items in cart
+     */
     const getTotalDiscount = () => {
-        let totalDisc = 0
+        let totalDisc = 0;
         cartItems.forEach((item) => {
             if (item.discount) {
                 totalDisc += parseInt(item.discount * item.quantity);
             }
         });
-        return totalDisc
+        return convertToDecimal(totalDisc);
     }
+    /**
+     * return the total price amount of all items in cart
+     */
     const getTotalAmount = () => {
-        let totalAmt = 0
+        let totalAmt = 0;
         cartItems.forEach((item) => {
             if (item.price) {
                 totalAmt += parseInt(item.price * item.quantity);
             }
         });
-        return totalAmt;
+        return convertToDecimal(totalAmt);
     }
+    /**
+     * return total TYPE DISCOUNT for items with type fiction
+     */
+    const getTypeDiscount = () => {
+        let typeDiscount = 0;
+        cartItems.forEach((item) => {
+            if (item.quantity && item.type === FICTION) {
+                typeDiscount += TYPE_DISCOUNT * item.price * item.quantity;
+            }
+        });
+        return convertToDecimal(typeDiscount); 
+    }
+    /**
+     * removes an item from cart and pops a notification
+     * @param { number } id 
+     */
     const removeCartItem = (id) => {
+        const {title, message} = POPUP;
         setCartItems((items) => items.filter((item) => item.id !== id));
         store.addNotification({
-            title: "Deleted",
-            message: "Item deleted from cart",
+            title: title,
+            message: message,
             type: "warning",
             insert: "top",
             container: "top-center",
@@ -57,6 +99,9 @@ function ItemProvider(props) {
             }
           });
     }
+    /**
+     * reset the cart items to the original static data when cart is empty
+     */
     const resetCart = () => {
         setCartItems(() => staticCartItems);
     }
@@ -67,7 +112,9 @@ function ItemProvider(props) {
         resetCart,
         changeQuantity,
         getTotalDiscount,
-        getTotalAmount
+        getTotalAmount,
+        getTypeDiscount,
+        convertToDecimal
     }
     return (
         <ItemContext.Provider value={defaultContext}>

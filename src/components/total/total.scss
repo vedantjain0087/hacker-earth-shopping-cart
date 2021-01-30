@@ -19,7 +19,7 @@
                 @include flex-box(space-between, center, nowrap);
                 font-size: 1.5rem;
                 &:first-child() {
-                    min-width: 70%;
+                    min-width: 65%;
                     margin-right: 2rem;
                     word-break: break-word;
                 }
