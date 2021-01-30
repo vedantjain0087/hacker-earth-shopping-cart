@@ -10,7 +10,7 @@ function Cart() {
     return (
         <Fragment>
             <Row className="cart__header">
-                <Col xs={6} sm={6} className="text-items">Items({cartItems.length})</Col>
+                <Col xs={6} sm={6} className="text-items">Items ({cartItems.length})</Col>
                 <Col xs={3} sm={3} className="text-items text-center">Qty</Col>
                 <Col xs={3} sm={3} className="text-items text-center">Price</Col>
             </Row>
