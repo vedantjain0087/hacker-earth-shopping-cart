@@ -1,8 +1,9 @@
 import React, {Fragment, useContext} from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import Item from "../item";
 import Quantity from "../quantity";
 import Price from "../price";
+import NullState from "../null_state"
 import { ItemContext } from "../../context/itemContext";
 
 function Cart() {
@@ -14,7 +15,7 @@ function Cart() {
                 <Col xs={3} sm={3} className="text-items text-center">Qty</Col>
                 <Col xs={3} sm={3} className="text-items text-center">Price</Col>
             </Row>
-            {cartItems.map((item) => {
+            {cartItems.length ? cartItems.map((item) => {
                 return (
                     <Row key={item.id}>
                         <Col xs={6} sm={6} className="mb-4">
@@ -28,7 +29,7 @@ function Cart() {
                         </Col>
                     </Row>
                 );
-            })}
+            }) : <NullState></NullState>}
         </Fragment>
     );
 }
