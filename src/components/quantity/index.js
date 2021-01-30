@@ -9,8 +9,12 @@ function Quantity({quantity, id}) {
      * @param {Object} e event argument
      */
     const handleChange = (e) => {
-        // if value is invalid then set it to 0
-        setQuantity((qty) => e.target.value ? e.target.value : 0);
+        let newQty = e.target.value;
+        setQuantity((qty) => {
+            if (isNaN(newQty)) return qty;
+            // if value is invalid then set it to 0
+            return newQty  < 0 ? 0 : newQty;
+        });
     }
     /**
      * change the total quantity count of the cart items
@@ -22,13 +26,13 @@ function Quantity({quantity, id}) {
      * decrement the quantity
      */
     const decrementQuantity = () => {
-        setQuantity((previousQty) => previousQty <= 1 ? 0 : previousQty - 1);
+        setQuantity((previousQty) => previousQty <= 1 ? 0 : parseInt(previousQty) - 1);
     }
     /**
      * increment the quantity
      */
     const incrementQuantity = () => {
-        setQuantity((previousQty) => previousQty + 1);
+        setQuantity((previousQty) => parseInt(previousQty) + 1);
     }
     return (
         <div className="quantity">
