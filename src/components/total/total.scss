@@ -1,7 +1,9 @@
 .total {
     border: 1px solid $whisper;
-    max-width: 30rem;
     padding: 2rem 0 0 0;
+    @include screen-lg(min-width) {
+        max-width: 30rem;
+    }
     &__title {
         font-size: 1.5rem;
         padding: 0 2rem;

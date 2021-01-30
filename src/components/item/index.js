@@ -13,7 +13,7 @@ function Item ({name, id}) {
             message: "Item deleted from cart",
             type: "warning",
             insert: "top",
-            container: "top-right",
+            container: "top-center",
             animationIn: ["animate__animated", "animate__fadeIn"],
             animationOut: ["animate__animated", "animate__fadeOut"],
             dismiss: {

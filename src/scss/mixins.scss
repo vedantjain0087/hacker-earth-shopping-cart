@@ -9,3 +9,14 @@
     -webkit-box-shadow: $shadow;
     -moz-box-shadow: $shadow;
 }
+/// @param {String} $width - break point type - Can be "max-width" or "min-width"
+@mixin screen-lg($width: 'min-width') {
+    @media screen and (#{$width}: $screen-lg) {
+      @content;
+    }
+}
+@mixin screen-xs($width: 'min-width') {
+    @media screen and (#{$width}: $screen-xs) {
+      @content;
+    }
+}

@@ -14,6 +14,9 @@
     &__count {
         height: 5.5rem;
         width: 5rem;
+        @include screen-xs(max-width) {
+            width: 4rem;
+        }
         input {
             @include box-shadow(2px 2px 5px 0px rgba(0,0,0,0.05));
             border: 1px solid $whisper;

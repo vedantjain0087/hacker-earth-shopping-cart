@@ -22,10 +22,10 @@ export default function App() {
             </Col>
           </Row>
           <Row>
-            <Col sm={12} lg={8}>
+            <Col xs={{span: 12, order: 2}} sm={{span: 12, order: 2}} lg={{span: 8, order: 1}}>
               <Cart></Cart>
             </Col>
-            <Col sm={12} lg={4}>
+            <Col xs={{span: 12, order: 1}} sm={{span: 12, order: 1}} lg={{span: 4, order: 2}} className="mb-4">
               <Total></Total>
             </Col>
           </Row>
