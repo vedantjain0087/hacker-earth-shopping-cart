@@ -1,0 +1,30 @@
+.item {
+    @include flex-box(flex-start, center, wrap);
+    @include box-shadow(2px 2px 5px 0px rgba(0,0,0,0.05));
+    border: 1px solid $whisper;
+    padding: 0.5rem 1rem 0.5rem 0.5rem;
+    &__icon-wrapper {
+        @include flex-box(center, center, wrap);
+        background-color: $white-smoke;
+        height: 4rem;
+        width: 4rem;
+        margin-right: 1rem;
+        .icon {
+            color: $white;
+            font-size: 3rem;
+        }
+    }
+    &__item-name {
+        color: $dark-cyan;
+        font-size: 1.5rem;
+    }
+    &__close {
+        color: $grey-1;
+        height: 1.5rem;
+        width: 1.5rem;
+        cursor: pointer;
+        .close-icon {
+            font-size: 1.5rem;
+        }
+    }
+}

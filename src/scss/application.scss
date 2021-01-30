@@ -1,0 +1,11 @@
+// main scss file, this contains all the major imports
+@import "~bootstrap/scss/bootstrap";
+
+@import "./global.scss";
+@import "./variable.scss";
+@import "./mixins.scss";
+@import "../app.scss";
+@import "../components/cart/cart.scss";
+@import "../components/item/item.scss";
+@import "../components/quantity/quantity.scss";
+@import "../components/price/price.scss";

@@ -1,0 +1,17 @@
+.app-title {
+    @include flex-box(flex-start, center, wrap);
+    &__icon-wrapper {
+        @include flex-box(center, center, wrap);
+        height: 3rem;
+        width: 3rem;
+        margin-right: 1.5rem;
+        .icon {
+            font-size: 2.5rem;
+            color: $dark-medium;
+        }
+    }
+    &__title {
+        font-size: 3rem;
+        color: $dark-medium;
+    }
+}

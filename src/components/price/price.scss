@@ -1,0 +1,7 @@
+.price {
+    @include flex-box(center, center, wrap);
+    color: $dark-medium;
+    font-size: 2rem;
+    height: 5.5rem;
+    width: 5rem;
+}

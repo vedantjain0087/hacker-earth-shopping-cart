@@ -4,7 +4,7 @@ Run `(nvm use 12)` to switch to version 12 \
 if node v12.20.1 is not install, then install by `(nvm install 12)`
 
 ### `Yarn Version`
-This project is using yarn `(1.22.10)`
+This project is using yarn `(1.22.4)`
 ## Available Scripts
 
 In the project directory, you can run:

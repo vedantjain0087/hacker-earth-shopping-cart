@@ -1,0 +1,26 @@
+.quantity {
+    @include flex-box(center, center, wrap);
+    &__action {
+        cursor: pointer;
+        .decrement, .increment {
+            font-size: 2rem;
+            color: $dark-medium;
+            margin: 0 1.5rem 0 0;
+        }
+        .increment {
+            margin: 0 0 0 1.5rem;
+        }
+    }
+    &__count {
+        height: 5.5rem;
+        width: 5rem;
+        input {
+            @include box-shadow(2px 2px 5px 0px rgba(0,0,0,0.05));
+            border: 1px solid $whisper;
+            height: 100%;
+            width: 100%;
+            font-size: 2rem;
+            text-align: center;
+        }
+    }
+}

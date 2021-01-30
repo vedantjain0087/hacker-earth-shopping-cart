@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
+import Cart from "./components/cart";
+import Total from "./components/total"
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Row>
+        <Col xs={12} sm={12} className="app-title">
+            <span className="app-title__icon-wrapper">
+                <FontAwesomeIcon icon={faAngleLeft} className="icon" />
+            </span>
+            <span className="app-title__title">Order Summary</span>
+        </Col>
+      </Row>
+      <Row>
+        <Col sm={12} md={8}>
+          <Cart></Cart>
+        </Col>
+        <Col sm={12} md={4}>
+          <Total></Total>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
