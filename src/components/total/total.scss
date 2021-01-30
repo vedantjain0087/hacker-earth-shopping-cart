@@ -1,0 +1,39 @@
+.total {
+    border: 1px solid $whisper;
+    max-width: 30rem;
+    padding: 2rem 0 0 0;
+    &__title {
+        font-size: 1.5rem;
+        padding: 0 2rem;
+    }
+    &__billing {
+        @include box-shadow(2px 2px 5px 0px rgba(0,0,0,0.05));
+        list-style-type: none;
+        margin: 0;
+        padding: 0 2rem 2.5rem;
+        li {
+            @include flex-box(space-between, center, nowrap);
+            div {
+                @include flex-box(space-between, center, nowrap);
+                font-size: 1.5rem;
+                &:first-child() {
+                    min-width: 70%;
+                    margin-right: 2rem;
+                    word-break: break-word;
+                }
+                &:last-child() {
+                    text-align: right;
+                    word-break: break-word;
+                }
+            }
+        }
+    }
+    &__footer {
+        @include flex-box(space-between, center, nowrap);
+        background-color: $white-smoke;
+        padding: 3rem 2rem 1.5rem;
+        div {
+            font-size: 1.5rem;
+        }
+    }
+} 
